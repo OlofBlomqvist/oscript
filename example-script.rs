@@ -12,7 +12,7 @@ use std::env::{current_dir, current_exe};
 use oscript::*;
 
 #[oscript_async_main]
-pub fn main(some_required_string:&str, some_flag:&bool, possibly_some_int:Option<i32>) {
+pub fn main(some_required_string:&str, some_flag:bool, possibly_some_int:Option<i32>) {
 
     println!("MAGIC: {:#?}",args);
     println!("can also access them directly: {some_required_string}");
