@@ -34,3 +34,8 @@ pub fn main(some_required_string:&str, some_flag:&bool, possibly_some_int:Option
 
 }
 ```
+
+
+Known issues (todo):
+
+- `--generate-completions` is not yet separated from other args and cant be used without also providing all required args
