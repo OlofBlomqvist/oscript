@@ -4,6 +4,7 @@ description = "helper crate to simplify the creation of rust scripts"
 version = "0.1.0"
 edition = "2021"
 authors = ["Olof Blomqvist <olof@twnet.se>"]
+license-file = "LICENSE"
 repository = "https://github.com/OlofBlomqvist/oscript"
 
 [dependencies]
