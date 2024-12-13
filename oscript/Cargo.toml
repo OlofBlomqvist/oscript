@@ -1,0 +1,15 @@
+[package]
+name = "oscript"
+version = "0.1.0"
+edition = "2021"
+authors = ["Olof Blomqvist <olof@twnet.se>"]
+
+[dependencies]
+oscript-derive = { path = "../oscript-derive" }
+clap_complete = "4.5.38"
+clap = { version = "4.2", features = ["derive"] }
+tokio = { version = "*", optional = true, features = ["full"] }
+
+[features]
+default = []
+tokio = ["dep:tokio"] 

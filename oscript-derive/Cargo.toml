@@ -1,0 +1,15 @@
+[package]
+name = "oscript-derive"
+version = "0.1.0"
+edition = "2021"
+authors = ["Olof Blomqvist <olof@twnet.se>"]
+license-file = "LICENSE"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+clap_complete = "4.5.38"
+clap = { version = "4.2", features = ["derive"] }
+syn = { version = "2.0", features = ["full"] }
+quote = "1.0"
