@@ -18,7 +18,7 @@ edition = "2021"
 version = "0.1.0"
 
 [dependencies]
-oscript = { path = "oscript", features = ["tokio"] }
+oscript = { git = "https://github.com/OlofBlomqvist/oscript", features = ["tokio"] }
 ---
 
 use std::env::{current_dir, current_exe};
