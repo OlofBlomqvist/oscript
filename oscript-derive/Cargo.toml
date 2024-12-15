@@ -1,7 +1,7 @@
 [package]
 name = "oscript-derive"
 description = "helper crate to simplify the creation of rust scripts. this crate should not be directly referenced"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Olof Blomqvist <olof@twnet.se>"]
 license-file = "LICENSE"

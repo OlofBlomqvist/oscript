@@ -231,29 +231,17 @@ dependencies = [
 
 [[package]]
 name = "oscript"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "clap",
  "clap_complete",
- "oscript-derive 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "oscript-derive",
  "tokio",
 ]
 
 [[package]]
 name = "oscript-derive"
-version = "0.1.0"
-dependencies = [
- "clap",
- "clap_complete",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "oscript-derive"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0fda5131cd56714974339f57069870a569e2481d878c0a325e723aee819a1215"
+version = "0.1.1"
 dependencies = [
  "clap",
  "clap_complete",
