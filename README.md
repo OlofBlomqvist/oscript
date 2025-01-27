@@ -97,3 +97,54 @@ Options:
           Print help
 
 ```
+
+
+
+
+Another example:
+```rust
+#!/usr/bin/env -S cargo +nightly -Z script
+--- 
+[package]
+name = "atest"
+version = "0.1.0"
+[dependencies]
+argon2 = { version = "0.5.3" }
+oscript = { version = "0.1.1" }
+---
+use argon2::{password_hash::SaltString, Argon2, Params, PasswordHasher, PasswordVerifier};
+use oscript::*;
+
+#[oscript_main]
+fn main(pwd:&str,salt:&str,pepper:&str) {
+
+    let before = std::time::Instant::now();
+
+    let b64_salt = SaltString::encode_b64(salt.as_bytes())
+        .expect("salt must be less than 64 bytes long");
+ 
+    let argon2 = Argon2::new_with_secret(
+        pepper.as_bytes(),            // Secret/Pepper
+        argon2::Algorithm::Argon2id,  // Recommended 
+        argon2::Version::V0x13,       // Latest version
+        Params::new(
+            1024*19,     // - `m_cost`: memory size in 1 KiB blocks. Between 8\*`p_cost` and (2^32)-1.
+            2,           // - `t_cost`: number of iterations. Between 1 and (2^32)-1.
+            1,           // - `p_cost`: degree of parallelism. Between 1 and (2^24)-1.
+            Some(32) // - `output_len`: size of the KDF output in bytes. Default 32.
+        ).unwrap()).unwrap();
+
+    let hash = argon2.hash_password(pwd.as_bytes(), &b64_salt).unwrap();  
+    let serialized_hash = hash.to_string();
+
+    println!("Serialized result: {serialized_hash}");
+ 
+    match argon2.verify_password(pwd.as_bytes(), &hash) {
+        Ok(_) => println!("Yep, it works"),
+        Err(e) => println!("Nope, no works: {e:?}"),
+    }
+
+    println!("TIME!!!! {:.2?}", before.elapsed());
+
+}
+```
